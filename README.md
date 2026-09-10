@@ -4,7 +4,11 @@ A small C++ demo that turns any image into a live halftone-style "dot matrix" re
  
 Rendering is done in real time with **SFML**; image loading and pixel sampling is done with **OpenCV**.
 
+**Monochromatic**:
 <img width="1536" height="768" alt="Screenshot 2026-09-09 213308" src="https://github.com/user-attachments/assets/1ec7c2ca-7b31-41c2-a19f-fee9dbf62b38" />
+
+**Color Mode**:
+<img width="2048" height="1024" alt="ImageExample" src="https://github.com/user-attachments/assets/158db8be-0a1f-4eec-b3da-cfa390c3f2bf" />
 
 ## How It Works
  
@@ -51,4 +55,4 @@ Increasing the grid dimensions gives finer detail (more, smaller dots); decreasi
 - The image path is hardcoded to `image.jpg` — there's no command-line argument for choosing a file yet.
 - The `circles` vector is rebuilt from scratch every frame even though the source image never changes after load — this is wasted work and could be hoisted outside the main loop.
 - If the image dimensions aren't evenly divisible by the grid size, integer division truncates the remainder, so a thin strip of pixels along the right/bottom edge is never sampled.
-- Dots are always solid white; color information from the source image isn't used.
+- `colorMode` must be set in the code before running.
